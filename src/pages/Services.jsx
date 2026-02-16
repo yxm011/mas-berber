@@ -282,55 +282,9 @@ const Services = () => {
                 <span className="text-gold text-sm font-semibold tracking-widest uppercase border border-gold px-4 py-2 rounded-full">{t('common.since2017')}</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">{t('nav.booking')}</h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
                 {t('services.contactText')}
               </p>
-              
-              {/* WhatsApp Dropdown */}
-              <div className="relative inline-block barber-dropdown">
-                <button
-                  onClick={() => setShowBarberMenu(!showBarberMenu)}
-                  className="inline-flex items-center space-x-3 bg-green-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-600 transition-all hover:scale-105 shadow-xl"
-                >
-                  <MessageCircle className="w-6 h-6" />
-                  <span>{t('services.contactButton')}</span>
-                </button>
-                
-                {showBarberMenu && (
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-white rounded-xl shadow-2xl p-4 w-80 z-[9999]">
-                    <h3 className="font-heading font-semibold text-gray-900 mb-3 text-center">{t('common.selectBarber')}</h3>
-                    <div className="space-y-2">
-                      {barbers.map((barber, index) => (
-                        <button
-                          key={index}
-                          onClick={() => handleBarberClick(barber.phone)}
-                          className="w-full text-left p-3 rounded-lg hover:bg-green-50 transition-all group border border-transparent hover:border-green-500"
-                        >
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-3">
-                              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                                <MessageCircle size={20} className="text-white" />
-                              </div>
-                              <div>
-                                <div className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
-                                  {barber.name}
-                                </div>
-                                <div className="text-sm text-gray-500">{barber.displayPhone}</div>
-                              </div>
-                            </div>
-                            <div className="flex items-center space-x-1">
-                              <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-500' : 'bg-gray-400'}`}></div>
-                              <span className={`text-xs font-medium ${isOnline ? 'text-green-600' : 'text-gray-500'}`}>
-                                {isOnline ? t('common.online') : t('common.offline')}
-                              </span>
-                            </div>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
             </div>
           </div>
         </div>
