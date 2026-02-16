@@ -35,7 +35,7 @@ const About = () => {
       <section className="relative py-32 bg-gradient-to-br from-black via-navy to-black overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="/mas-abiler.webp" 
+            src="/MAS2.webp" 
             alt="MAS Barber Shop Team"
             className="w-full h-full object-cover"
           />
