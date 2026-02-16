@@ -18,7 +18,7 @@ const About = () => {
       name: 'Selim Özşahin',
       instagram: 'https://www.instagram.com/selimozsahin/',
       handle: '@selimozsahin',
-      photo: '/mas-barber-berber-shop-selim-ozsahin copy.webp'
+      photo: '/mas-barber-berber-shop-selim-ozsahin.webp'
     }
   ];
 
