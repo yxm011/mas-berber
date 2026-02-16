@@ -165,7 +165,7 @@ const Home = () => {
             <div className="relative">
               <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" 
+                  src="/MAS2.webp" 
                   alt="MAS Barber Shop Interior"
                   className="w-full h-full object-cover"
                 />
