@@ -9,6 +9,17 @@
     @apply scroll-smooth;
   }
   
+  html {
+    font-size: 100%;
+  }
+  
+  /* Reduce base font size by 15% on mobile devices */
+  @media (max-width: 768px) {
+    html {
+      font-size: 85%;
+    }
+  }
+  
   body {
     @apply font-body text-gray-900 bg-white;
   }
