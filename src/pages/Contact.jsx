@@ -1,6 +1,8 @@
-import { MapPin, Phone, Clock, Instagram } from 'lucide-react';
+import { MapPin, Phone, Clock, Instagram, Facebook, Youtube } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   return (
     <div className="pt-20 page-transition">
       {/* Hero Section */}
@@ -8,10 +10,10 @@ const Contact = () => {
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
-            İletişim
+            {t('contact.title')}
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Bize ulaşın, size yardımcı olmaktan mutluluk duyarız
+            {t('contact.subtitle')}
           </p>
         </div>
       </section>
@@ -23,7 +25,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all hover:scale-105">
               <MapPin className="w-12 h-12 text-gold mb-4" />
-              <h3 className="font-semibold text-lg mb-2">Adres</h3>
+              <h3 className="font-semibold text-lg mb-2">{t('contact.address')}</h3>
               <p className="text-gray-600 text-sm">
                 Akat Mahallesi Meydan Caddesi<br />
                 Mermerler Sitesi No: 16/A<br />
@@ -33,17 +35,17 @@ const Contact = () => {
 
             <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all hover:scale-105">
               <Clock className="w-12 h-12 text-gold mb-4" />
-              <h3 className="font-semibold text-lg mb-2">Çalışma Saatleri</h3>
+              <h3 className="font-semibold text-lg mb-2">{t('contact.workingHours')}</h3>
               <p className="text-gray-600 text-sm">
-                Pazartesi - Pazar<br />
-                09:00 - 20:00<br />
-                Her gün açık
+                {t('contact.mondayToSunday')}<br />
+                {t('contact.hours')}<br />
+                {t('contact.openEveryDay')}
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all hover:scale-105">
               <Phone className="w-12 h-12 text-gold mb-4" />
-              <h3 className="font-semibold text-lg mb-4">Telefon</h3>
+              <h3 className="font-semibold text-lg mb-4">{t('contact.phone')}</h3>
               
               {/* Main Shop Number */}
               <div className="mb-4 pb-4 border-b border-gray-200">
@@ -85,17 +87,41 @@ const Contact = () => {
 
             <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all hover:scale-105">
               <Instagram className="w-12 h-12 text-gold mb-4" />
-              <h3 className="font-semibold text-lg mb-2">Sosyal Medya</h3>
-              <div className="space-y-2 text-sm">
-                <a href="https://www.instagram.com/turkmustafa/" target="_blank" rel="noopener noreferrer" className="block text-gray-600 hover:text-gold">
-                  @turkmustafa
-                </a>
-                <a href="https://www.instagram.com/aliozcelik52/" target="_blank" rel="noopener noreferrer" className="block text-gray-600 hover:text-gold">
-                  @aliozcelik52
-                </a>
-                <a href="https://www.instagram.com/selimozsahin/" target="_blank" rel="noopener noreferrer" className="block text-gray-600 hover:text-gold">
-                  @selimozsahin
-                </a>
+              <h3 className="font-semibold text-lg mb-2">{t('contact.socialMedia')}</h3>
+              
+              {/* Main Shop Social Media */}
+              <div className="mb-4 pb-4 border-b border-gray-200">
+                <p className="text-xs text-gray-500 mb-2 font-semibold">MAS Barber Shop</p>
+                <div className="space-y-2 text-sm">
+                  <a href="https://www.instagram.com/masbarbershop/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-gray-600 hover:text-gold transition-colors">
+                    <Instagram size={16} />
+                    <span>@masbarbershop</span>
+                  </a>
+                  <a href="https://www.facebook.com/masbarbershopturkey" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-gray-600 hover:text-gold transition-colors">
+                    <Facebook size={16} />
+                    <span>MAS Barber Shop Turkey</span>
+                  </a>
+                  <a href="https://www.youtube.com/@masbarbershop4019/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-gray-600 hover:text-gold transition-colors">
+                    <Youtube size={16} />
+                    <span>@masbarbershop4019</span>
+                  </a>
+                </div>
+              </div>
+              
+              {/* Barbers' Instagram */}
+              <div>
+                <p className="text-xs text-gray-500 mb-2 font-semibold">Berberlerimiz</p>
+                <div className="space-y-2 text-sm">
+                  <a href="https://www.instagram.com/turkmustafa/" target="_blank" rel="noopener noreferrer" className="block text-gray-600 hover:text-gold">
+                    @turkmustafa
+                  </a>
+                  <a href="https://www.instagram.com/aliozcelik52/" target="_blank" rel="noopener noreferrer" className="block text-gray-600 hover:text-gold">
+                    @aliozcelik52
+                  </a>
+                  <a href="https://www.instagram.com/selimozsahin/" target="_blank" rel="noopener noreferrer" className="block text-gray-600 hover:text-gold">
+                    @selimozsahin
+                  </a>
+                </div>
               </div>
             </div>
           </div>

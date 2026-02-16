@@ -1,6 +1,8 @@
 import { Award, Instagram, Calendar, MapPin, Users, Sparkles, Star } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
   const founders = [
     {
       name: 'Mustafa Türk',
@@ -22,12 +24,13 @@ const About = () => {
     }
   ];
 
-  const partners = [
-    { name: 'Schwarzkopf Professional', category: 'Profesyonel Saç Bakımı' },
-    { name: 'Contura', category: 'Styling & Bakım' },
-    { name: 'Wella Professionals', category: 'Renk & Bakım Uzmanı' },
-    { name: 'American Crew', category: 'Erkek Bakım Ürünleri' }
+  const getPartners = () => [
+    { name: 'Schwarzkopf Professional', category: t('aboutPage.professionalHairCare') },
+    { name: 'Contura', category: t('aboutPage.stylingCare') },
+    { name: 'Wella Professionals', category: t('aboutPage.colorCareExpert') },
+    { name: 'American Crew', category: t('aboutPage.mensGrooming') }
   ];
+  const partners = getPartners();
 
   return (
     <div className="pt-20 page-transition">
@@ -43,26 +46,26 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block mb-6">
-            <span className="text-gold text-sm font-semibold tracking-widest uppercase border border-gold px-6 py-2 rounded-full">2017'den Beri</span>
+            <span className="text-gold text-sm font-semibold tracking-widest uppercase border border-gold px-6 py-2 rounded-full">{t('common.since2017')}</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6">
             MAS Barber Shop
           </h1>
           <p className="text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Profesyonel berberlik sanatında mükemmellik
+            {t('aboutPage.heroSubtitle')}
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-gray-300">
             <div className="flex items-center space-x-2">
               <Calendar className="w-5 h-5 text-gold" />
-              <span>Nisan 2017</span>
+              <span>{t('about.founded')}</span>
             </div>
             <div className="flex items-center space-x-2">
               <MapPin className="w-5 h-5 text-gold" />
-              <span>Etiler, İstanbul</span>
+              <span>{t('about.location')}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Users className="w-5 h-5 text-gold" />
-              <span>3 Kurucu Ortak</span>
+              <span>{t('about.founders')}</span>
             </div>
           </div>
         </div>
@@ -72,25 +75,21 @@ const About = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">Hikayemiz</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">{t('aboutPage.ourStory')}</h2>
             <div className="w-24 h-1 bg-gold mx-auto mb-8"></div>
           </div>
           
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-700 leading-relaxed mb-6">
-              Mustafa Türk, Ali Özçelik ve Selim Özşahin 2017 Nisan ayında bir araya gelerek 
-              MAS Barber Shop'u faaliyete geçirmişlerdir.
+              {t('about.description1')}
             </p>
             
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              Rahatlığı ön planda tuttukları mekanlarında, 3 adet 40 m² bahçe manzaralı VIP odalar, 
-              samimi ve huzurlu bir ana salon tasarlayıp, müşterilerine keyifli bir ortam sunmaktadırlar.
+              {t('about.description2')}
             </p>
 
             <p className="text-lg text-gray-600 leading-relaxed">
-              MAS Barber Shop'un berber salonu anlayışında öncelik müşterilerinin kendilerini 
-              tamamen rahat hissetmeleridir. Her detayda mükemmellik ve müşteri memnuniyeti odaklı 
-              hizmet anlayışıyla sektörde fark yaratmaktadır.
+              {t('about.description3')}
             </p>
           </div>
         </div>
@@ -100,8 +99,8 @@ const About = () => {
       <section className="py-20 bg-gradient-to-br from-cream via-white to-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">Kurucularımız</h2>
-            <p className="text-xl text-gray-600">MAS Barber Shop'un vizyoner ekibi</p>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">{t('aboutPage.ourFounders')}</h2>
+            <p className="text-xl text-gray-600">{t('aboutPage.storyText')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -142,19 +141,19 @@ const About = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-bold text-gold mb-2">7+</div>
-              <div className="text-gray-300">Yıllık Deneyim</div>
+              <div className="text-gray-300">{t('about.yearsExperience')}</div>
             </div>
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-bold text-gold mb-2">3</div>
-              <div className="text-gray-300">VIP Oda</div>
+              <div className="text-gray-300">{t('about.vipRooms')}</div>
             </div>
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-bold text-gold mb-2">40m²</div>
-              <div className="text-gray-300">Bahçe Manzaralı</div>
+              <div className="text-gray-300">{t('about.gardenView')}</div>
             </div>
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-bold text-gold mb-2">100%</div>
-              <div className="text-gray-300">Müşteri Memnuniyeti</div>
+              <div className="text-gray-300">{t('about.customerSatisfaction')}</div>
             </div>
           </div>
         </div>
@@ -165,11 +164,11 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block mb-4">
-              <span className="text-gold text-sm font-semibold tracking-widest uppercase border border-gold px-4 py-2 rounded-full">Premium Markalar</span>
+              <span className="text-gold text-sm font-semibold tracking-widest uppercase border border-gold px-4 py-2 rounded-full">{t('aboutPage.premiumBrands')}</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">Partnerlerimiz</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">{t('aboutPage.ourPartners')}</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Dünya çapında tanınmış premium markalarla çalışarak size en kaliteli hizmeti sunuyoruz
+              {t('aboutPage.partnersText')}
             </p>
           </div>
 
@@ -196,7 +195,7 @@ const About = () => {
       <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">Değerlerimiz</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">{t('aboutPage.ourValues')}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -204,9 +203,9 @@ const About = () => {
               <div className="w-16 h-16 bg-gold/10 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <Award className="w-8 h-8 text-gold" />
               </div>
-              <h3 className="text-2xl font-heading font-bold mb-4">Profesyonellik</h3>
+              <h3 className="text-2xl font-heading font-bold mb-4">{t('aboutPage.professionalism')}</h3>
               <p className="text-gray-600">
-                Alanında uzman ekibimiz ve sürekli eğitim anlayışımızla en yüksek standartları sunuyoruz.
+                {t('aboutPage.professionalismText')}
               </p>
             </div>
 
@@ -214,9 +213,9 @@ const About = () => {
               <div className="w-16 h-16 bg-gold/10 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <Sparkles className="w-8 h-8 text-gold" />
               </div>
-              <h3 className="text-2xl font-heading font-bold mb-4">Kalite</h3>
+              <h3 className="text-2xl font-heading font-bold mb-4">{t('aboutPage.quality')}</h3>
               <p className="text-gray-600">
-                Premium ürünler ve modern tekniklerle her zaman en iyi sonucu hedefliyoruz.
+                {t('aboutPage.qualityText')}
               </p>
             </div>
 
@@ -224,9 +223,9 @@ const About = () => {
               <div className="w-16 h-16 bg-gold/10 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <Users className="w-8 h-8 text-gold" />
               </div>
-              <h3 className="text-2xl font-heading font-bold mb-4">Müşteri Odaklılık</h3>
+              <h3 className="text-2xl font-heading font-bold mb-4">{t('aboutPage.customerFocus')}</h3>
               <p className="text-gray-600">
-                Müşterilerimizin rahatı ve memnuniyeti her zaman önceliğimizdir.
+                {t('aboutPage.customerFocusText')}
               </p>
             </div>
           </div>

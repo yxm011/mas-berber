@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './contexts/LanguageContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -11,21 +12,23 @@ import Gallery from './pages/Gallery';
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hakkimizda" element={<About />} />
-          <Route path="/hizmetlerimiz" element={<Services />} />
-          <Route path="/iletisim" element={<Contact />} />
-          <Route path="/galeri" element={<Gallery />} />
-        </Routes>
-        <Footer />
-        <WhatsAppButton />
-      </div>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/hakkimizda" element={<About />} />
+            <Route path="/hizmetlerimiz" element={<Services />} />
+            <Route path="/iletisim" element={<Contact />} />
+            <Route path="/galeri" element={<Gallery />} />
+          </Routes>
+          <Footer />
+          <WhatsAppButton />
+        </div>
+      </Router>
+    </LanguageProvider>
   );
 }
 

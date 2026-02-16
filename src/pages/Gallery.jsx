@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Image, Video, Maximize2 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Gallery = () => {
   const [activeTab, setActiveTab] = useState('photos');
+  const { t } = useLanguage();
 
   return (
     <div className="pt-20 page-transition">
@@ -11,10 +13,10 @@ const Gallery = () => {
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
-            Galeri
+            {t('gallery.title')}
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Çalışmalarımızdan fotoğraflar ve videolar
+            {t('gallery.subtitle')}
           </p>
         </div>
       </section>
@@ -34,7 +36,7 @@ const Gallery = () => {
                 }`}
               >
                 <Image size={20} />
-                <span>Fotoğraflar</span>
+                <span>{t('gallery.photos')}</span>
               </button>
               <button
                 onClick={() => setActiveTab('videos')}
@@ -45,7 +47,7 @@ const Gallery = () => {
                 }`}
               >
                 <Video size={20} />
-                <span>Videolar</span>
+                <span>{t('gallery.videos')}</span>
               </button>
               <button
                 onClick={() => setActiveTab('360tour')}
@@ -56,7 +58,7 @@ const Gallery = () => {
                 }`}
               >
                 <Maximize2 size={20} />
-                <span>360° Tur</span>
+                <span>{t('gallery.tour360')}</span>
               </button>
             </div>
           </div>
@@ -97,18 +99,18 @@ const Gallery = () => {
                   ></iframe>
                 </div>
                 <div className="p-6 bg-gradient-to-br from-white to-gray-50">
-                  <h3 className="text-2xl font-heading font-bold mb-2">MAS Barber Shop</h3>
-                  <p className="text-gray-600 mb-4">
-                    Profesyonel ekibimiz ve hizmetlerimiz hakkında daha fazla bilgi için YouTube kanalımızı ziyaret edin.
+                  <h3 className="text-2xl font-heading font-semibold mb-4">{t('gallery.comingSoon')}</h3>
+                  <p className="text-gray-600 mb-6">
+                    {t('gallery.videoGallery')}
                   </p>
                   <a
                     href="https://www.youtube.com/@masbarbershop4019/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-gold text-black px-6 py-3 rounded-full font-semibold hover:bg-gold-dark transition-all hover:scale-105"
+                    className="inline-flex items-center space-x-2 bg-red-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-red-700 transition-all"
                   >
                     <Video size={20} />
-                    <span>Daha Fazla Video İçin Kanalımızı Ziyaret Edin</span>
+                    <span>{t('gallery.viewChannel')}</span>
                   </a>
                 </div>
               </div>
@@ -132,9 +134,12 @@ const Gallery = () => {
                   ></iframe>
                 </div>
                 <div className="p-6 bg-gradient-to-br from-white to-gray-50">
-                  <h3 className="text-2xl font-heading font-bold mb-2">360° Sanal Tur</h3>
+                  <h3 className="text-2xl font-heading font-semibold mb-4">{t('gallery.comingSoon')}</h3>
+                  <p className="text-gray-600">
+                    {t('gallery.photoGallery')}
+                  </p>
                   <p className="text-gray-600 mb-4">
-                    Salonumuzu 360 derece keşfedin. Fareyle sürükleyerek etrafınıza bakabilir, yakınlaştırabilir ve salonumuzun her köşesini görebilirsiniz.
+                    Fareyle sürükleyerek etrafınıza bakabilir, yakınlaştırabilir ve salonumuzun her köşesini görebilirsiniz.
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <div className="inline-flex items-center space-x-2 bg-gold/10 text-gold px-4 py-2 rounded-full text-sm font-semibold">

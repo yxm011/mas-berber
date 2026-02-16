@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Scissors, MessageCircle } from 'lucide-react';
+import { Menu, X, Scissors, MessageCircle, Globe } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showBarberMenu, setShowBarberMenu] = useState(false);
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [isOnline, setIsOnline] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
 
   // Check if current time is within work hours (09:00 - 20:00)
@@ -62,6 +65,9 @@ const Navbar = () => {
       if (!event.target.closest('.navbar-dropdown')) {
         setShowBarberMenu(false);
       }
+      if (!event.target.closest('.language-dropdown')) {
+        setShowLanguageMenu(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -108,20 +114,71 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-white hover:text-gold transition-all duration-300 hover:scale-110">
-              Ana Sayfa
+              {t('nav.home')}
             </Link>
             <Link to="/hakkimizda" className="text-white hover:text-gold transition-all duration-300 hover:scale-110">
-              Hakkımızda
+              {t('nav.about')}
             </Link>
             <Link to="/hizmetlerimiz" className="text-white hover:text-gold transition-all duration-300 hover:scale-110">
-              Hizmetlerimiz
+              {t('nav.services')}
             </Link>
             <Link to="/galeri" className="text-white hover:text-gold transition-all duration-300 hover:scale-110">
-              Galeri
+              {t('nav.gallery')}
             </Link>
             <Link to="/iletisim" className="text-white hover:text-gold transition-all duration-300 hover:scale-110">
-              İletişim
+              {t('nav.contact')}
             </Link>
+            
+            {/* Language Selector */}
+            <div className="relative language-dropdown">
+              <button
+                onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+                className="flex items-center space-x-2 text-white hover:text-gold transition-all duration-300"
+              >
+                <Globe size={20} />
+                <span className="text-sm font-semibold uppercase">{language}</span>
+              </button>
+              
+              {showLanguageMenu && (
+                <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-2xl p-2 w-48 z-50">
+                  <button
+                    onClick={() => { setLanguage('tr'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'tr' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇹🇷</span>
+                    <span className="font-medium text-gray-900">Türkçe</span>
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('en'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'en' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇬🇧</span>
+                    <span className="font-medium text-gray-900">English</span>
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('ar'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'ar' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇸🇦</span>
+                    <span className="font-medium text-gray-900">العربية</span>
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('fr'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'fr' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇫🇷</span>
+                    <span className="font-medium text-gray-900">Français</span>
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('ru'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'ru' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇷🇺</span>
+                    <span className="font-medium text-gray-900">Русский</span>
+                  </button>
+                </div>
+              )}
+            </div>
             
             {/* Randevu Al Dropdown */}
             <div className="relative navbar-dropdown">
@@ -129,12 +186,12 @@ const Navbar = () => {
                 onClick={() => setShowBarberMenu(!showBarberMenu)}
                 className="bg-gold text-black px-6 py-2 rounded-full font-semibold hover:bg-gold-dark transition-all duration-300 hover:scale-105 active:scale-95"
               >
-                Randevu Al
+                {t('nav.booking')}
               </button>
               
               {showBarberMenu && (
                 <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-2xl p-4 w-80 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <h3 className="font-heading font-semibold text-gray-900 mb-3 text-center">Berberinizi Seçin</h3>
+                  <h3 className="font-heading font-semibold text-gray-900 mb-3 text-center">{t('common.selectBarber')}</h3>
                   <div className="space-y-2">
                     {barbers.map((barber, index) => (
                       <button
@@ -157,7 +214,7 @@ const Navbar = () => {
                           <div className="flex items-center space-x-1">
                             <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-500' : 'bg-gray-400'}`}></div>
                             <span className={`text-xs font-medium ${isOnline ? 'text-green-600' : 'text-gray-500'}`}>
-                              {isOnline ? 'Online' : 'Offline'}
+                              {isOnline ? t('common.online') : t('common.offline')}
                             </span>
                           </div>
                         </div>
@@ -169,13 +226,67 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white"
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          {/* Mobile Language Selector & Menu Button */}
+          <div className="md:hidden flex items-center space-x-4">
+            {/* Mobile Language Selector */}
+            <div className="relative language-dropdown">
+              <button
+                onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+                className="flex items-center space-x-1 text-white hover:text-gold transition-all duration-300"
+              >
+                <Globe size={24} />
+                <span className="text-xs font-semibold uppercase">{language}</span>
+              </button>
+              
+              {showLanguageMenu && (
+                <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-2xl p-2 w-48 z-50">
+                  <button
+                    onClick={() => { setLanguage('tr'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'tr' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇹🇷</span>
+                    <span className="font-medium text-gray-900">Türkçe</span>
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('en'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'en' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇬🇧</span>
+                    <span className="font-medium text-gray-900">English</span>
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('ar'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'ar' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇸🇦</span>
+                    <span className="font-medium text-gray-900">العربية</span>
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('fr'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'fr' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇫🇷</span>
+                    <span className="font-medium text-gray-900">Français</span>
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('ru'); setShowLanguageMenu(false); }}
+                    className={`w-full flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all ${language === 'ru' ? 'bg-gold/10' : ''}`}
+                  >
+                    <span className="text-2xl">🇷🇺</span>
+                    <span className="font-medium text-gray-900">Русский</span>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white"
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -188,40 +299,40 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
               className="block w-full text-left text-white hover:text-gold transition-colors py-2"
             >
-              Ana Sayfa
+              {t('nav.home')}
             </Link>
             <Link 
               to="/hakkimizda"
               onClick={() => setIsOpen(false)}
               className="block w-full text-left text-white hover:text-gold transition-colors py-2"
             >
-              Hakkımızda
+              {t('nav.about')}
             </Link>
             <Link 
               to="/hizmetlerimiz"
               onClick={() => setIsOpen(false)}
               className="block w-full text-left text-white hover:text-gold transition-colors py-2"
             >
-              Hizmetlerimiz
+              {t('nav.services')}
             </Link>
             <Link 
               to="/galeri"
               onClick={() => setIsOpen(false)}
               className="block w-full text-left text-white hover:text-gold transition-colors py-2"
             >
-              Galeri
+              {t('nav.gallery')}
             </Link>
             <Link 
               to="/iletisim"
               onClick={() => setIsOpen(false)}
               className="block w-full text-left text-white hover:text-gold transition-colors py-2"
             >
-              İletişim
+              {t('nav.contact')}
             </Link>
             
             {/* Mobile Barber Selection */}
             <div className="pt-4 border-t border-gray-700">
-              <h3 className="text-white font-semibold mb-3 text-center">Randevu Al - Berberinizi Seçin</h3>
+              <h3 className="text-white font-semibold mb-3 text-center">{t('common.selectBarber')}</h3>
               <div className="space-y-2">
                 {barbers.map((barber, index) => (
                   <button

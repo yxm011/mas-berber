@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Scissors, Sparkles, Star, MessageCircle } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Services = () => {
   const [showBarberMenu, setShowBarberMenu] = useState(false);
   const [isOnline, setIsOnline] = useState(false);
+  const { t } = useLanguage();
 
   // Check if current time is within work hours (09:00 - 20:00)
   const checkWorkHours = () => {
@@ -68,10 +70,10 @@ const Services = () => {
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
-            Hizmetlerimiz
+            {t('services.title')}
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Profesyonel ekibimiz ve kaliteli ürünlerimizle size özel hizmet sunuyoruz
+            {t('services.subtitle')}
           </p>
         </div>
       </section>
@@ -86,10 +88,10 @@ const Services = () => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-block mb-4">
-              <span className="text-gold text-sm font-semibold tracking-widest uppercase border border-gold px-4 py-2 rounded-full">Premium Hizmetler</span>
+              <span className="text-gold text-sm font-semibold tracking-widest uppercase border border-gold px-4 py-2 rounded-full">{t('common.since2017')}</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">Özel Hizmet Kategorilerimiz</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">Her detayda mükemmellik için profesyonel ekibimiz ve premium ürünlerimizle hizmetinizdeyiz</p>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">{t('services.title')}</h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">{t('services.subtitle')}</p>
           </div>
 
           {/* Service Categories Grid */}
@@ -103,7 +105,7 @@ const Services = () => {
                   <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Scissors className="w-8 h-8 text-gold" />
                   </div>
-                  <h3 className="text-3xl font-heading font-bold text-white">Kesim ve Tasarım</h3>
+                  <h3 className="text-3xl font-heading font-bold text-white">{t('services.cutting.title')}</h3>
                 </div>
               </div>
               <div className="p-8 bg-gradient-to-b from-white to-gray-50">
@@ -112,19 +114,19 @@ const Services = () => {
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Saç Kesimi</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.cutting.haircut')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Sakal Kesimi</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.cutting.beardcut')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Kişiye Özel Saç Tasarımı</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.cutting.customDesign')}</span>
                   </li>
                 </ul>
               </div>
@@ -139,7 +141,7 @@ const Services = () => {
                   <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Sparkles className="w-8 h-8 text-gold" />
                   </div>
-                  <h3 className="text-3xl font-heading font-bold text-white">Saç Şekil ve Renk</h3>
+                  <h3 className="text-3xl font-heading font-bold text-white">{t('services.styling.title')}</h3>
                 </div>
               </div>
               <div className="p-8 bg-gradient-to-b from-white to-gray-50">
@@ -148,37 +150,37 @@ const Services = () => {
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Kişiye Özel Saç Bakımı</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.styling.customCare')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Kalıcı Saç Düzleştirme (Defrize)</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.styling.straightening')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Kalıcı Saç Dalgalandırma (Bioform)</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.styling.waving')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Beyaz Saçta Renk Kırma (Zotos)</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.styling.grayColoring')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Saç, Sakal ve Kaş Boyama</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.styling.dyeing')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Saç Şekline Göre Renklendirme</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.styling.shapeColoring')}</span>
                   </li>
                 </ul>
               </div>
@@ -193,7 +195,7 @@ const Services = () => {
                   <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Star className="w-8 h-8 text-gold" />
                   </div>
-                  <h3 className="text-3xl font-heading font-bold text-white">Saç Sakal Bakım</h3>
+                  <h3 className="text-3xl font-heading font-bold text-white">{t('services.beardCare.title')}</h3>
                 </div>
               </div>
               <div className="p-6">
@@ -202,25 +204,19 @@ const Services = () => {
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Saç Yıkama</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.beardCare.customBeardCare')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Saç Bakımı</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.beardCare.beardStraightening')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Sakal Bakımı</span>
-                  </li>
-                  <li className="flex items-start group/item">
-                    <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
-                      <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
-                    </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Yüz Bakımı</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.beardCare.customBeardDesign')}</span>
                   </li>
                 </ul>
               </div>
@@ -235,7 +231,7 @@ const Services = () => {
                   <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Sparkles className="w-8 h-8 text-gold" />
                   </div>
-                  <h3 className="text-3xl font-heading font-bold text-white">Özel Bakım</h3>
+                  <h3 className="text-3xl font-heading font-bold text-white">{t('services.extraServices.title')}</h3>
                 </div>
               </div>
               <div className="p-6">
@@ -244,43 +240,31 @@ const Services = () => {
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Cilt Bakımı</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.extraServices.ingrown')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Kaş Tasarımı</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.extraServices.customProducts')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Batık Tedavisi</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.extraServices.waxing')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Kişiye Özel Ürün Kullanımı</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.extraServices.manicure')}</span>
                   </li>
                   <li className="flex items-start group/item">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
                       <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
                     </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Ağda</span>
-                  </li>
-                  <li className="flex items-start group/item">
-                    <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
-                      <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
-                    </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Manikür</span>
-                  </li>
-                  <li className="flex items-start group/item">
-                    <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-gold transition-colors">
-                      <span className="text-gold group-hover/item:text-white text-sm font-bold">✓</span>
-                    </div>
-                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">Pedikür</span>
+                    <span className="text-gray-700 font-medium group-hover/item:text-gray-900 transition-colors">{t('services.extraServices.pedicure')}</span>
                   </li>
                 </ul>
               </div>
@@ -288,66 +272,64 @@ const Services = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="relative bg-gradient-to-br from-black via-navy to-black rounded-3xl p-12 md:p-16 text-center shadow-2xl overflow-hidden border border-gold/30">
+          <div className="relative bg-gradient-to-br from-black via-navy to-black rounded-3xl p-12 md:p-16 text-center shadow-2xl overflow-visible border border-gold/30 z-10">
             {/* Decorative elements */}
-            <div className="absolute top-0 left-1/4 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-0 left-1/4 w-64 h-64 bg-gold/10 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gold/10 rounded-full blur-3xl -z-10"></div>
             
-            <div className="relative z-10">
+            <div className="relative z-20">
               <div className="inline-block mb-6">
-                <span className="text-gold text-sm font-semibold tracking-widest uppercase border border-gold px-6 py-2 rounded-full">Premium Randevu</span>
+                <span className="text-gold text-sm font-semibold tracking-widest uppercase border border-gold px-4 py-2 rounded-full">{t('common.since2017')}</span>
               </div>
-              <h3 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
-                Randevu Almak İster Misiniz?
-              </h3>
-              <p className="text-gray-300 mb-10 text-xl max-w-3xl mx-auto leading-relaxed">
-                Profesyonel ekibimizle tanışın ve size özel hizmet alın. Fiyat bilgisi için WhatsApp üzerinden iletişime geçin.
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">{t('nav.booking')}</h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                {t('services.contactText')}
               </p>
-            
+              
               {/* WhatsApp Dropdown */}
               <div className="relative inline-block barber-dropdown">
                 <button
                   onClick={() => setShowBarberMenu(!showBarberMenu)}
-                  className="group inline-flex items-center space-x-3 bg-gradient-to-r from-green-500 to-green-600 text-white px-12 py-6 rounded-full font-bold text-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-green-500/50"
+                  className="inline-flex items-center space-x-3 bg-green-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-600 transition-all hover:scale-105 shadow-xl"
                 >
-                  <MessageCircle size={28} className="group-hover:rotate-12 transition-transform duration-300" />
-                  <span>Berberinizi Seçin ve Randevu Alın</span>
+                  <MessageCircle className="w-6 h-6" />
+                  <span>{t('services.contactButton')}</span>
                 </button>
-              
-              {showBarberMenu && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-white rounded-xl shadow-2xl p-4 w-80 z-50">
-                  <h3 className="font-heading font-semibold text-gray-900 mb-3 text-center">Berberinizi Seçin</h3>
-                  <div className="space-y-2">
-                    {barbers.map((barber, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleBarberClick(barber.phone)}
-                        className="w-full text-left p-3 rounded-lg hover:bg-green-50 transition-all group border border-transparent hover:border-green-500"
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                              <MessageCircle size={20} className="text-white" />
-                            </div>
-                            <div>
-                              <div className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
-                                {barber.name}
+                
+                {showBarberMenu && (
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 bg-white rounded-xl shadow-2xl p-4 w-80 z-[9999]">
+                    <h3 className="font-heading font-semibold text-gray-900 mb-3 text-center">{t('common.selectBarber')}</h3>
+                    <div className="space-y-2">
+                      {barbers.map((barber, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleBarberClick(barber.phone)}
+                          className="w-full text-left p-3 rounded-lg hover:bg-green-50 transition-all group border border-transparent hover:border-green-500"
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-3">
+                              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <MessageCircle size={20} className="text-white" />
                               </div>
-                              <div className="text-sm text-gray-500">{barber.displayPhone}</div>
+                              <div>
+                                <div className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+                                  {barber.name}
+                                </div>
+                                <div className="text-sm text-gray-500">{barber.displayPhone}</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                              <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-500' : 'bg-gray-400'}`}></div>
+                              <span className={`text-xs font-medium ${isOnline ? 'text-green-600' : 'text-gray-500'}`}>
+                                {isOnline ? t('common.online') : t('common.offline')}
+                              </span>
                             </div>
                           </div>
-                          <div className="flex items-center space-x-1">
-                            <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-500' : 'bg-gray-400'}`}></div>
-                            <span className={`text-xs font-medium ${isOnline ? 'text-green-600' : 'text-gray-500'}`}>
-                              {isOnline ? 'Online' : 'Offline'}
-                            </span>
-                          </div>
-                        </div>
-                      </button>
-                    ))}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
               </div>
             </div>
           </div>
