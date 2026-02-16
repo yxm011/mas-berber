@@ -79,7 +79,7 @@ const Home = () => {
         ></div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <div className="w-56 h-56 mx-auto mt-16 mb-8">
+          <div className="w-56 h-56 mx-auto mt-16 mb-4">
             <img 
               src="/logo.png" 
               alt="MAS Barber Shop Logo"
