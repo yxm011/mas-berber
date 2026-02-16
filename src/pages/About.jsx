@@ -18,7 +18,7 @@ const About = () => {
       name: 'Selim Özşahin',
       instagram: 'https://www.instagram.com/selimozsahin/',
       handle: '@selimozsahin',
-      photo: '/mas-barber-berber-shop-selim-ozsahin copy.jpg'
+      photo: '/mas-barber-berber-shop-selim-ozsahin copy.webp'
     }
   ];
 
@@ -35,7 +35,7 @@ const About = () => {
       <section className="relative py-32 bg-gradient-to-br from-black via-navy to-black overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="/mas-abiler.JPEG" 
+            src="/mas-abiler.webp" 
             alt="MAS Barber Shop Team"
             className="w-full h-full object-cover"
           />
